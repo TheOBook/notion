@@ -1,6 +1,6 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-// modify this file to avoid the error due to clerk organisation settings
+// modify this file to avoid the error due to clerk organisation settings. Read clerk documentation for more information.
 
 const isPublicRoute = createRouteMatcher(["/sign-in", "/sign-up"]);
 
