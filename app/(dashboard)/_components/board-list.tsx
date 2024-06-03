@@ -3,6 +3,8 @@
 import { EmptySearch } from "./empty-search";
 import { EmptyBoards } from "./empty-boards";
 import { EmptyFavorites } from "./empty-favorites";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 interface BoardListProps {
   orgId: string;
@@ -13,7 +15,12 @@ interface BoardListProps {
 }
 
 export const BoardList = ({ orgId, query }: BoardListProps) => {
-  const data = []; //todo : change to api call
+  const data = useQuery(api.boards.get, { orgId });
+
+  // convex return undefined when it's in loading phase
+  if (data === undefined) {
+    return <div>Loading...</div>;
+  }
 
   // when user search for something that dosent existe (if we don't have data length)
   // the order matter !!
@@ -29,5 +36,5 @@ export const BoardList = ({ orgId, query }: BoardListProps) => {
     return <EmptyBoards />;
   }
 
-  return <div>{JSON.stringify(query)}</div>;
+  return <div>{JSON.stringify(data)}</div>;
 };
