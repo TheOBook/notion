@@ -1,17 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { toast } from "sonner";
 import Image from "next/image";
-import { useState } from "react";
 import { Poppins } from "next/font/google";
-import { useAction, useQuery } from "convex/react";
 import { useSearchParams } from "next/navigation";
-import { Banknote, LayoutDashboard, Star } from "lucide-react";
-import { OrganizationSwitcher, useOrganization } from "@clerk/nextjs";
+import { LayoutDashboard, Star } from "lucide-react";
+import { OrganizationSwitcher } from "@clerk/nextjs";
 
 import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
+
 import { Button } from "@/components/ui/button";
 
 const font = Poppins({
@@ -22,10 +19,6 @@ const font = Poppins({
 export const OrgSidebar = () => {
   const searchParams = useSearchParams();
   const favorites = searchParams.get("favorites");
-
-  const { organization } = useOrganization();
-
-  const [pending, setPending] = useState(false);
 
   return (
     <div className="hidden lg:flex flex-col space-y-6 w-[206px] pl-5 pt-5">
