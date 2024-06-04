@@ -6,3 +6,7 @@
 
 # Board list :
 npm i date-fns
+
+
+# Card actions :
+npm i zustand
