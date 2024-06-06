@@ -13,3 +13,8 @@ npm i zustand
 
 
 # Favoriting functionality :
+
+
+
+# Search querying :
+npm i convex-helpers
